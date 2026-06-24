@@ -7,8 +7,11 @@ const response = query({
 
 // iterate on response & print that
 async function main() {
-  for await (const message of response) {
-    console.log(`Response: ${message}`);
+  for await (const message of response) { 
+    if (message.type === 'result' && message.subtype === 'success') {
+      console.log(`>`, message.result);
+      
+    }
   }
 }
 
